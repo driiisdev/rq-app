@@ -1,4 +1,6 @@
-import GetSuperHeroes from "../hooks/getSuperHeroes";
+import { Link } from "react-router-dom";
+
+import GetSuperHeroes from "../hooks/useGetSuperHeroes";
 
 const onSuccess = (data) =>{
   console.log('data fetching successful', data);
@@ -28,16 +30,20 @@ const RqSuperHeroes = () => {
     <>
       <h2>RQ Super Heroes</h2>
       <button onClick={refetch}>refetch</button>
-      {/* {data?.data.map((hero)=>{
-        return(
-          <div key={hero.id}>{hero.name}</div>
-        );
-      })} */}
-      {data?.map((heroName)=>{
+      {
+        data?.data.map((hero)=>{
+          return(
+            <div key={hero.id}>
+              <Link to={`/rq-super-heroes/${hero.id}`}>{hero.name}</Link>
+            </div>
+          )
+        })
+      }
+      {/* {data?.map((heroName)=>{
           return(
             <div key={heroName}>{heroName}</div>
           );
-        })}
+        })} */}
     </>
   )
 }
