@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQueries } from 'react-query'
 import axios from 'axios';
 
 const fetchSuperHeroes = (heroId) => {
@@ -6,6 +6,15 @@ const fetchSuperHeroes = (heroId) => {
 }
 
 const DynamicParallel = ({ heroIds }) => {
+  const queryResult = useQueries(
+    heroIds.map((id)=>{
+      return({
+        queryKey:["super-hero", id],
+        queryFn: ()=> fetchSuperHeroes(id),
+      });
+    })
+  );
+  console.log("DynamicParallel", queryResult);
   return (
     <div>DynamicParallel</div>
   )
