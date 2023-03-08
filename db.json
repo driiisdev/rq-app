@@ -29,5 +29,17 @@
       "id": 3,
       "name": "Rachel Green"
     }
+  ],
+  "users": [
+    {
+      "id": "olayinkayakub@yahoo.com",
+      "channelId": "driiisdev"
+    }
+  ],
+  "channels": [
+    {
+      "id": "driiisdev",
+      "courses": ["c", "javascript", "python"]
+    }
   ]
 }
