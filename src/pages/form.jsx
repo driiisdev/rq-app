@@ -1,5 +1,5 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import GetSuperHeroes from "../hooks/useGetSuperHeroes";
 
 const onSuccess = (data) =>{
@@ -11,11 +11,24 @@ const onError = (error) =>{
 }
 
 const RqSuperHeroes = () => {
-  const { isLoading, data, isError, error, isFetching, refetch } = GetSuperHeroes(onSuccess, onError);
+  const [name, setName] = useState('')
+  const [alterEgo, setAlterEgo] = useState('')
+  const { 
+    isLoading, 
+    data, 
+    isError, 
+    error, 
+    isFetching, 
+    refetch 
+  } = GetSuperHeroes(onSuccess, onError);
+
+  const handleAddHeroClick = () => {
+    console.log({name, alterEgo});
+  }
 
   console.log({isLoading, isFetching});
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return(
       <h2>Loading ...</h2>
     );
@@ -29,6 +42,11 @@ const RqSuperHeroes = () => {
   return (
     <>
       <h2>RQ Super Heroes</h2>
+      <div>
+        <input type="text" value={name} onChange={(e)=> setName(e.target.value)} />
+        <input type="text" value={alterEgo} onChange={(e)=> setAlterEgo(e.target.value)} />
+        <button onClick={handleAddHeroClick}>Add Hero</button>
+      </div>
       <button onClick={refetch}>refetch</button>
       {
         data?.data.map((hero)=>{
@@ -39,11 +57,6 @@ const RqSuperHeroes = () => {
           )
         })
       }
-      {/* {data?.map((heroName)=>{
-          return(
-            <div key={heroName}>{heroName}</div>
-          );
-        })} */}
     </>
   )
 }

@@ -2,12 +2,10 @@ import { useParams } from "react-router-dom";
 import useGetSuperHero from "../hooks/useGetSuperHero";
 
 const RqSuperHero = () => {
-
   const { heroId } = useParams();
+  const {isLoading, data, isError, error} = useGetSuperHero(heroId);
 
-  const {isLoading, isFetching, data, isError, error} = useGetSuperHero(heroId);
-
-  if (isLoading || isFetching) {
+  if (isLoading) {
     return(
       <h2>Loading ...</h2>
     );

@@ -7,20 +7,22 @@ const fetchSuperHero = ({queryKey}) => {
 }
 
 const useGetSuperHero = (heroId) => {
-
-  const queryClient = useQueryClient();
-
+  const queryClient = useQueryClient()
   return useQuery(["superHero", heroId], fetchSuperHero, {
     initialData: () => {
-      const hero = queryClient.getQueryData("superHero")?.data?.find((hero) => hero.id === parseInt(heroId))
-
+      const hero = queryClient
+      .getQueryData("superHeroes")
+      ?.data?.find(hero => hero.id === parseInt(heroId))
       if (hero) {
-        return {data: hero}
+        // console.log(hero);
+        // console.log("works");
+        return({data: hero});
       }else{
-        return undefined
+        // console.log("doesnt work");
+        return (undefined);
       }
-    },
-  });
+    }
+  })
 }
 
 export default useGetSuperHero;
