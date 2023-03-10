@@ -1,5 +1,5 @@
 {
-  "superheroes":[
+  "superheroes": [
     {
       "id": 1,
       "name": "Batman",
@@ -14,6 +14,31 @@
       "id": 3,
       "name": "wonder woman",
       "alterEgo": "Princess Diana"
+    },
+    {
+      "name": "black panther",
+      "alterEgo": "boseman chadwick",
+      "id": 4
+    },
+    {
+      "name": "aquaman",
+      "alterEgo": "jason mamoa",
+      "id": 5
+    },
+    {
+      "name": "spiderman",
+      "alterEgo": "tom holland",
+      "id": 6
+    },
+    {
+      "name": "rambo",
+      "alterEgo": "syvester stallon",
+      "id": 7
+    },
+    {
+      "name": "catwoman",
+      "alterEgo": "selina kyle",
+      "id": 8
     }
   ],
   "friends": [
@@ -39,7 +64,11 @@
   "channels": [
     {
       "id": "driiisdev",
-      "courses": ["c", "javascript", "python"]
+      "courses": [
+        "c",
+        "javascript",
+        "python"
+      ]
     }
   ],
   "colors": [

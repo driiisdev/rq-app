@@ -6,7 +6,7 @@ const fetchSuperHero = ({queryKey}) => {
   return(axios.get(`http://localhost:4000/superheroes/${heroId}`));
 }
 
-const useGetSuperHero = (heroId) => {
+export const useGetSuperHero = (heroId) => {
   const queryClient = useQueryClient()
   return useQuery(["superHero", heroId], fetchSuperHero, {
     initialData: () => {
@@ -24,5 +24,3 @@ const useGetSuperHero = (heroId) => {
     }
   })
 }
-
-export default useGetSuperHero;

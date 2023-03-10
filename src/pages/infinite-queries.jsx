@@ -1,4 +1,4 @@
-import {useInfiniteQuery} from 'react-query';
+import { useInfiniteQuery } from 'react-query';
 import axios from 'axios';
 import { Fragment } from 'react';
 

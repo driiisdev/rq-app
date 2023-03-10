@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-
-import GetSuperHeroes from "../hooks/useGetSuperHeroes";
+import { useGetSuperHeroes } from "../hooks/useSuperHeroes";
 
 const onSuccess = (data) =>{
   console.log('data fetching successful', data);
@@ -11,7 +10,7 @@ const onError = (error) =>{
 }
 
 const RqSuperHeroes = () => {
-  const { isLoading, data, isError, error, isFetching, refetch } = GetSuperHeroes(onSuccess, onError);
+  const { isLoading, data, isError, error, isFetching, refetch } = useGetSuperHeroes(onSuccess, onError);
 
   console.log({isLoading, isFetching});
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import GetSuperHeroes from "../hooks/useGetSuperHeroes";
+import { useGetSuperHeroes, useAddSuperHeroes } from "../hooks/useSuperHeroes";
 
 const onSuccess = (data) =>{
   console.log('data fetching successful', data);
@@ -10,7 +10,7 @@ const onError = (error) =>{
   console.log('data fetching unsuccessful', error);
 }
 
-const RqSuperHeroes = () => {
+const Form = () => {
   const [name, setName] = useState('')
   const [alterEgo, setAlterEgo] = useState('')
   const { 
@@ -18,17 +18,18 @@ const RqSuperHeroes = () => {
     data, 
     isError, 
     error, 
-    isFetching, 
-    refetch 
-  } = GetSuperHeroes(onSuccess, onError);
+    refetch
+  } = useGetSuperHeroes(onSuccess, onError);
+
+  const { mutate } = useAddSuperHeroes();
 
   const handleAddHeroClick = () => {
     console.log({name, alterEgo});
+    const hero = { name, alterEgo };
+    mutate(hero);
   }
 
-  console.log({isLoading, isFetching});
-
-  if (isLoading || isFetching) {
+  if (isLoading) {
     return(
       <h2>Loading ...</h2>
     );
@@ -61,4 +62,4 @@ const RqSuperHeroes = () => {
   )
 }
 
-export default RqSuperHeroes;
+export default Form;
